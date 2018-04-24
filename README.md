@@ -1,7 +1,7 @@
 <img src="https://jhonykaesemodel.com/img/headers/overview_image2mesh.png" width="800">
 
-# Image2Mesh: A learning framework for single image 3D reconstruction
-Here you'll find the codes for the paper **[Image2Mesh: A learning framework for single image 3D reconstruction](https://jhonykaesemodel.com/publication/image2mesh/)**.
+# Image2Mesh: A Learning Framework for Single Image 3D Reconstruction
+Here you'll find the codes for the paper **[Image2Mesh: A Learning Framework for Single Image 3D Reconstruction](https://jhonykaesemodel.com/publication/image2mesh/)**.
 
 ## Datasets Used
 In this work we used the **[ShapeNetCore.v1](https://www.shapenet.org/)** and **[PASCAL3D+\_release1.1](http://cvgl.stanford.edu/projects/pascal3d.html)** datasets.
