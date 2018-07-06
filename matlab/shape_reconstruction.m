@@ -9,7 +9,7 @@ file_params_hat_train = 'model_fnn_params_b1_e2000_train';
 file_params_hat_test = 'model_fnn_params_b1_e2000_test';
 
 is_plot_confusion = false;
-idx_sample = 3; % example to be reconstructed
+idx_sample = 3; % example to be reconstructed if not using the loop to iterate over all test samples
 
 % class = 'chair';
 % class = 'sofa';
@@ -124,6 +124,8 @@ is_experiment = true;
 shape_cd = [];
 shape_score = [];
 
+for idx_sample = 3500:5000 % TODO: loop over all test samples 
+
 % Get a 3D model from the graph
 idx_gt_cat = [idx_gt_train; idx_gt_test];
 idx_hat_cat = [idx_hat_train; idx_hat_test];
@@ -235,6 +237,9 @@ theta = 1e-3;
 [CD, score] = distance_metrics(model_gt, model_ffd_lc_hat_def, theta);
 %fprintf("CD: %.4f, Distance Score: %.4f \n", CD, score);
 
+shape_cd = [shape_cd; CD];
+shape_score = [shape_score; score];
+
 % Save estimated model to OBJ file
 % normalize model before saving to voxelize later
 mean_vtx = mean(model_ffd_lc_hat_def.vtx', 2);
@@ -327,3 +332,8 @@ if is_experiment
     title('Deformed model with FFD + Linear Combination (Hat)')
     
 end
+
+end % end loop for the iteration over samples
+
+filename_shape_metrics = fullfile(data_dir,'shape_metrics_test.mat');
+save(filename_shape_metrics, 'shape_cd', 'shape_score')
